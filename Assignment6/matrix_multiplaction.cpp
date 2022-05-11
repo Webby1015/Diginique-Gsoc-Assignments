@@ -1,12 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-void multi(vector<vector<int>>a,vector<vector<int>>b){
+vector<vector<int>> multi(vector<vector<int>>a,vector<vector<int>>b){
     int m=a.size();
     int n=a[0].size();
     int m1=b.size();
     int n1=b[0].size();
+    vector<vector<int>> result;
     if(m==n1){
-    vector<vector<int>>mul;
+    
      cout<<"\n\nMultiplacation is:\n";
     int sum;
     for(int i=0;i<m1;i++){
@@ -16,10 +17,11 @@ void multi(vector<vector<int>>a,vector<vector<int>>b){
             for(int k=0; k<n1 ;k++){
                 sum = sum + a[i][k] * b[k][j];
             }
-            cout<<sum<<" ";
+            row3.push_back(sum);
         }
-        cout<<"\n";
+        result.push_back(row3);
     }}
+    return result;
 
 }
 
@@ -67,5 +69,13 @@ int main()
         }
         cout<<"\n";
     }
-    multi(a,b);
+    vector<vector<int>>w=multi(a,b);
+    for(int i=0;i<w.size();i++){
+        for (int j=0;j<w[0].size();j++){
+            cout<<w[i][j]<<' ';
+        }
+        cout<<"\n";
+    }
+    
+    
 }
