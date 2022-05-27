@@ -1,56 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 string X="0123456789";
-string add(string a, string b){
-    string ans="";
-    int i= a.size()-1;
-    int j= b.size()-1;
-    int carry=0;
-    while(i>=0 && j>=0)
-    {
-        int total = (a[i]-'0') + (b[j]-'0') + carry;
-        //cout<<"to add: "<<a[i]<<" "<<b[j]<<" carry: "<<carry<<"\n";
-        int last_digit = total%10;
-        carry = total/10;
-        //cout<<"total: "<<total<<" last_digit: "<<last_digit<<" carry: "<<carry<<"\n";
-        ans =ans+X[last_digit];
-        //cout<<ans<<"\n\n\n";
-        i--; j--;
-    }
+int compare(string a, string b){
+    int check=0;
+    string a1="";
+    string b1="";
+    int i=0,j=0,z=0,y=0;
+    if(a=="0" && b=="0") check=1;
+    for(z=0; z<a.size();z++) if (a[z]!='0') break;
+    for(i=z; i<a.size();i++) a1=a1+X[i];
     
-    //a has finished
-    // cout<<"a: "<<a<<" b: "<<b<<"\n";
-     //cout<<"i: "<<i<<" j: "<<j<<" ans: "<<ans<<"\n";
-    while(j>=0){
-        int total = (b[j]-'0')+carry;
-        int last_digit = total%10;
-        ans = ans+X[last_digit];
-        carry = total/10;
-        j--;
-    }
     
-    //b has finished
-    while(i>=0){
-        int total = (a[i]-'0')+carry;
-        int last_digit = total%10;
-        ans = ans+X[last_digit];
-        carry = total/10;
-        i--;
-    }
-    //i=1 => ans = a[1]+ans => ans = '9'+"0"=> ans= "90", i-- => i= 0
-    //i=0 => ans = '9'+ans => ans= "990"
+    for(y=0; y<b.size();y++) if (b[y]!='0') break;
+    for(j=y; j<b.size();j++) b1=b1+X[j];
     
-    if(carry>0){
-        ans= ans +X[carry];
+    if(a1.size()>b1.size()) check=1;
+    else if(i==j){
+        while(i<a.size()){
+        if ((a[i]-'0')>(b[i]-'0')){
+            check=1;
+        }
+        i++;}
     }
-    reverse(ans.begin(),ans.end());
-    cout<<"a: "<<a<<" b: "<<b<<" sum: "<<ans<<"\n"; 
-    return ans;
+    else if(a==b) check=1;
+    
+    return check;
 }
-
-
 int main(){
-    string a, b;
+    string a,b;
     cin>>a>>b;
-    cout<<add(a,b);
+    if(compare(a,b)) cout<<a<<" is greater than or equal to "<<b<<" .";
+    else cout<<a<<" is not greater than "<<b<<" .";
 }
