@@ -7,6 +7,8 @@ class Node{
     Node * link;
 };
 
+Node * head = new Node;
+ 
 void printList(Node * p){
     while(p != NULL){
         cout<<p->data<<endl;
@@ -18,13 +20,13 @@ void insert(Node * i){
     cout<<"Insert element :"<<endl;
     cin>>a->data;
     a->link=i;
+    head->link=a;
     printList(a);
 }
 
 
 
 int main(){
-    Node * head = new Node;
     Node * a = new Node;
     Node * b = new Node;
     Node * c = new Node;
