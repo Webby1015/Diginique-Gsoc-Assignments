@@ -16,7 +16,7 @@ public:
             int currVal = curr->val;
             
             if(currVal < x){
-                if(last->next == curr){ // adjacent
+                if(last->next == curr){
                     last = curr;
                     prev = curr;
                     curr = curr->next;
