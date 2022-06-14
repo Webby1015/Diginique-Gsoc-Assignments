@@ -1,26 +1,39 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
-int main(){
-    long long a[5];
-    long long max=0,min=0;
-    long long sum=0;
-    for(int i=0;i<5;i++){
-        cin >> a[i];
-        sum = sum+a[i];
-        if (a[i]>max)
-        {
-            max=a[i];}
-    }
-    min=a[0];
-    for(int i=0;i<5;i++){
-        
-        if(a[i]<min)
-        {
-            min=a[i];
+void mini_max(vector<long>a){
+    vector<long>sum;
+    
+    int size = a.size();
+    for(int i=0;i<size;i++){
+    
+        long temp=0;
+        for(int j=0;j<size;j++){
+            {
+                temp+=a[j];
+            }
         }
+        temp=temp-a[i];
+        sum.push_back(temp);
     }
-    cout<<sum-max<<" "<<sum-min;
+    //for(long i:sum) cout<<i<<" ";
+    long min=INT_FAST32_MAX;
+    long max=INT_FAST32_MIN;
+    //cout<<min<<endl;
+    for(long i:sum){
+        if(min>i) min=i; //cout<<min<<" ";
+        if(max<i) max=i;
+    }
+    cout<<min<<" "<<max;
+}
 
+int main(){
+    vector<long> a;
+    long temp;
+    for(int i=0;i<5;i++){
+        cin>>temp;
+        a.push_back(temp);
+    }
+    mini_max(a);
+    //cout<<endl<<"2390411747 3107767877";
 }
