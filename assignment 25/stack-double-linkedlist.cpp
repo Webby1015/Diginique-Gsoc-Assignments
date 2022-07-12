@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 struct Node {
     int data;
     struct Node* prev;
