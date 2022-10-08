@@ -1,0 +1,12 @@
+int Solution::solve(int A, vector<vector<int> > &B) {
+    
+    int count=0;
+    set<int>uni;
+    for( auto i : B){
+        for( int j: i) uni.insert(j);
+    }
+    return uni.size();
+    
+}  
+
+//score 120/200
